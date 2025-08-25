@@ -24,13 +24,52 @@ object baigorria { // vende empanadas
 }
 object galvan { // sueldo fijo
   var sueldo = 15000
+    var deuda = 0
+    var dinero = 0
 
   method sueldo(nuevoSueldo) {
     sueldo = nuevoSueldo
+    //dinero = nuevoSueldo - deuda
+    self.calcularDinero()
+    //self.calcularDeuda()
   }
+
+  method calcularDinero() {
+    if(deuda > sueldo)
+    {
+        dinero = 0
+        deuda -= sueldo
+    }
+    else{
+        dinero = sueldo - deuda
+        deuda = 0
+    }
+  }
+
+
   method sueldo() {
     return sueldo
   }
+
+  method gastar(cuanto) {
+    if(dinero == 0)
+    {
+        deuda += cuanto
+    }
+    else{
+        deuda += cuanto - dinero
+        dinero = 0
+    }
+
+  }
+
+    method deuda() {
+      return deuda
+    }
+    method dinero() {
+      return dinero
+    }
+
 
 
 }
