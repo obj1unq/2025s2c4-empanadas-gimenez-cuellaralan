@@ -1,88 +1,72 @@
 //Escribir aqui los objetos
-object baigorria { // vende empanadas
+object baigorria {
+  // vende empanadas
   var sueldo = 0
   var empanadasVendidas = 0
   var totalCobrado = 0
-
+  
   method sueldo(nuevoSueldo) {
     sueldo = nuevoSueldo
     totalCobrado += sueldo
     empanadasVendidas = 0
   }
-  method sueldo() {
-    return sueldo
+  
+  method sueldo() = sueldo
+  
+  method vender(cantEmpanadas) {
+    empanadasVendidas += cantEmpanadas
+    sueldo = empanadasVendidas * 15
   }
-    method vender(cantEmpanadas) {
-      empanadasVendidas += cantEmpanadas
-      sueldo = empanadasVendidas*15
-    }
-
-    method totalCobrado() {
-      return totalCobrado  
-    }
-
+  
+  method totalCobrado() = totalCobrado
 }
-object galvan { // sueldo fijo
-  var sueldo = 15000
-    var deuda = 0
-    var dinero = 0
 
+object galvan {
+  // sueldo fijo
+  var sueldo = 15000
+  var deuda = 0
+  var dinero = 0
+  
   method sueldo(nuevoSueldo) {
     sueldo = nuevoSueldo
     //dinero = nuevoSueldo - deuda
     self.calcularDinero()
     //self.calcularDeuda()
   }
-
+  
   method calcularDinero() {
-    if(deuda > sueldo)
-    {
-        dinero = 0
-        deuda -= sueldo
-    }
-    else{
-        dinero = sueldo - deuda
-        deuda = 0
+    if (deuda > sueldo) {
+      dinero = 0
+      deuda -= sueldo
+    } else {
+      dinero = sueldo - deuda
+      deuda = 0
     }
   }
-
-
-  method sueldo() {
-    return sueldo
-  }
-
+  
+  method sueldo() = sueldo
+  
   method gastar(cuanto) {
-    if(dinero == 0)
-    {
-        deuda += cuanto
+    if (dinero == 0) {
+      deuda += cuanto
+    } else {
+      deuda += cuanto - dinero
+      dinero = 0
     }
-    else{
-        deuda += cuanto - dinero
-        dinero = 0
-    }
-
   }
-
-    method deuda() {
-      return deuda
-    }
-    method dinero() {
-      return dinero
-    }
-
-
-
+  
+  method deuda() = deuda
+  
+  method dinero() = dinero
 }
 
 object gimenez {
   var fondo = 300000
-
+  
   method pagarSueldo(empleado) {
     fondo -= empleado.sueldo()
     empleado.sueldo(empleado.sueldo())
-  } 
-
-  method fondo() {
-    return fondo
   }
+  
+  method fondo() = fondo
 }
