@@ -55,9 +55,13 @@ object galvan {
     }
   }
   
-  method deuda() = deuda
+  method deuda() = self.abs(deuda)
   
-  method dinero() = dinero
+  method dinero() = self.abs(dinero)
+
+  method abs(monto) {
+    return if(monto < 0) monto*-1 else monto
+  }
 }
 
 object gimenez {
