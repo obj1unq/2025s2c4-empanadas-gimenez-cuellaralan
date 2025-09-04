@@ -1,21 +1,21 @@
 //Escribir aqui los objetos
 object baigorria {
   // vende empanadas
-  var sueldo = 0
+  //var sueldo = 0
   var empanadasVendidas = 0
   var totalCobrado = 0
-  
+  var property valorEmpanada = 15 
   method sueldo(nuevoSueldo) {
-    sueldo = nuevoSueldo
-    totalCobrado += sueldo
+    //sueldo = nuevoSueldo
+    totalCobrado += self.sueldo()
     empanadasVendidas = 0
   }
   
-  method sueldo() = sueldo
+  method sueldo() = empanadasVendidas*valorEmpanada
   
   method vender(cantEmpanadas) {
     empanadasVendidas += cantEmpanadas
-    sueldo = empanadasVendidas * 15
+    //sueldo = empanadasVendidas * valorEmpanada
   }
   
   method totalCobrado() = totalCobrado
@@ -27,8 +27,8 @@ object galvan {
   var deuda = 0
   var dinero = 0
   
-  method sueldo(nuevoSueldo) {
-    sueldo = nuevoSueldo
+  method sueldo(_sueldo) {
+    sueldo = _sueldo
     //dinero = nuevoSueldo - deuda
     self.calcularDinero()
     //self.calcularDeuda()
